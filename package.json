@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/archi13/ToDoWhen/issues"
   },
-  "homepage": "https://github.com/archi13/ToDoWhen"
+  "homepage": "https://github.com/archi13/ToDoWhen",
+  "dependencies": {
+    "express": "~4.3.1"
+  }
 }
