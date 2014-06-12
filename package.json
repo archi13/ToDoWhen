@@ -1,7 +1,7 @@
 {
   "name": "tets",
   "version": "0.0.0",
-  "description": "Hello World!",
+  "description": "Simple event notificator",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -17,6 +17,13 @@
   },
   "homepage": "https://github.com/archi13/ToDoWhen",
   "dependencies": {
-    "express": "~4.3.1"
+    "express": "~4.3.1",
+    "bluebird": "~2.0.6",
+    "coffee-script": "~1.7.1",
+    "passport": "~0.2.0",
+    "gulp-nodemon": "~1.0.4"
+  },
+  "devDependencies": {
+    "gulp": "~3.7.0"
   }
 }
