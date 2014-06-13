@@ -1,7 +1,7 @@
-
-
 app = require "./src/app"
+path = require "path"
+
 global.config = require "./src/config"
 
-app.then ->
+app.promise.then ->
 	console.log '#################### start catched ###########################'

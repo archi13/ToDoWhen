@@ -1,4 +1,5 @@
 fs = require "fs"
+npmPath = require "path"
 _ = require "lodash"
 
 module.exports = 
@@ -24,5 +25,5 @@ module.exports =
 					else
 						handlers.unshift middlewares
 
-				handlers.unshift "/#{route}"
+				handlers.unshift npmPath.join "/", route
 				app[method].apply app, handlers  

@@ -3,7 +3,7 @@ routes = require "./index"
 homeRoutes = 
 	"/":
 		"get": (req, res, next) ->
-			res.end "home router"
+			res.render "index"
 
 		"post": (req, res, next) ->
 			res.end "post on home"
