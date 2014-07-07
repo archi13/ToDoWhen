@@ -9,9 +9,11 @@ routes.load app
 
 app.set "views", path.join(__dirname, "views")
 app.set "view engine", "jade"
+app.use express.static path.join process.cwd(), "build"
 
-app.listen 3000, ->
-	p.fulfill()
+app.listen global.config.dev.port, ->
+  p.fulfill()
+  console.log "#################### app is started at #{global.config.dev.port} ###########################"
 
 app.promise = p.promise
 

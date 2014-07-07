@@ -1,4 +1,2 @@
-gulp = require "gulp"
-
-gulp.task "default", ->
-  
+require "./launch"
+require "./sass"

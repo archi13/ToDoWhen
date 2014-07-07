@@ -1,7 +1,6 @@
 require("coffee-script/register");
 
 var gutil = require("gulp-util");
-
-var gulpfile = "gulpfile.coffee";
+gulpfile = "./gulp/gulpfile.coffee"
 gutil.log("Using file", gutil.colors.magenta(gulpfile));
-require("./gulp/" + gulpfile);
+require(gulpfile);
