@@ -16,4 +16,4 @@ gulp.task "sass", ->
 gulp.task "watch", ->
 	gulp.watch "src/sass/*.sass", ["sass"]
 
-gulp.task 'default', ["express", "watch"]
+gulp.task 'default', ["express", "sass", "watch"]
