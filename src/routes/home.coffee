@@ -21,3 +21,5 @@ homeRoutes =
 
 module.exports = (app) ->
 	routes.init app, homeRoutes
+
+

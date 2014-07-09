@@ -1,0 +1,21 @@
+{
+  "name": "ToDoWhen",
+  "version": "0.0.0",
+  "homepage": "https://github.com/archi13/ToDoWhen",
+  "authors": [
+    "Vitalii <amorphiuss@outlook.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/bower",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass-official": "~3.2.0",
+    "jquery": "~2.1.1"
+  }
+}
