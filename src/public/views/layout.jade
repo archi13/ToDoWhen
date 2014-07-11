@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    title
+      block title
+        | Notify me
+
+    link(rel="stylesheet" href="/css/main.css")
+    script(src="/js/bower/requirejs/require")
+    script.
+        require(["/js/require.js"], function(){
+          console.log("RequireJS is loaded");
+          require("/js/pages/test");
+        });
+    block head
+
+  body
+    block content
