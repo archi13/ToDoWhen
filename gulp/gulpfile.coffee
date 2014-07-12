@@ -25,7 +25,7 @@ gulp.task "sass_compile", ->
 gulp.task "coffee_compile", ->
 	gulp.src "./src/public/**/*.coffee"
 		.pipe coffee()
-		.pipe gulp.dest "./build/public"
+		.pipe gulp.dest "./build/js"
 
 gulp.task "express", ->
 	nodemon {script: "index.coffee", ext: "html coffee js jade"}
