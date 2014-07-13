@@ -2,7 +2,6 @@ gulp = require "gulp"
 nodemon = require "gulp-nodemon"
 sass = require "gulp-ruby-sass"
 del = require "del"
-sequence = require "run-sequence"
 coffee = require "gulp-coffee"
 
 
