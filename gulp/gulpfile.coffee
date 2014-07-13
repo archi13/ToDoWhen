@@ -11,11 +11,15 @@ gulp.task "casper", ->
 
 gulp.task "clean_build", ->
 	del "build", ->
-		gulp.start "bower_src_copy", "sass_compile", "coffee_compile", "watch_sass", "watch_coffee", "express"
+		gulp.start "bower_src_copy", "img_copy", "sass_compile", "coffee_compile", "watch_sass", "watch_coffee", "express"
 
 gulp.task "bower_src_copy", ->
 	gulp.src "./bower/**/*.*", {base: "./bower"}
 		.pipe gulp.dest "build/js/bower"
+
+gulp.task "img_copy", ->
+	gulp.src "./src/public/img/**/*.*", {base: "./src/public/img"}
+		.pipe gulp.dest "build/img"
 
 gulp.task "sass_compile", ->
     gulp.src "src/public/sass/**/*.sass"
