@@ -13,27 +13,25 @@ gulp.task "casper", ->
 gulp.task "clean", ->
 	del "build", ->
 
-gulp.task "bower_src_copy", ->
+gulp.task "bower_src_copy", ["clean"], ->
 	gulp.src "./src/public/bower/**/*.*", {base: "./src/public/bower"}
-		.pipe gulp.dest "build/public/bower"
+		.pipe gulp.dest "build/bower"
 
-gulp.task "sass_compile", ->
+gulp.task "sass_compile", ["clean"], ->
     gulp.src "src/public/sass/**/*.sass"
         .pipe sass()
         .pipe gulp.dest "build/css"
 
-gulp.task "coffee_compile", ->
+gulp.task "coffee_compile", ["clean"], ->
 	gulp.src "./src/public/**/*.coffee"
 		.pipe coffee()
 		.pipe gulp.dest "./build/js"
 
-gulp.task "express", ->
+gulp.task "express", ["clean"], ->
 	nodemon {script: "index.coffee", ext: "html coffee js jade"}
 
-gulp.task "watch_sass", ->
+gulp.task "watch_sass", ["clean"], ->
 	gulp.watch "src/public/sass/*.sass", ["sass"]
 
 
-gulp.task 'default', ->
-	sequence "clean", ["bower_src_copy", "sass_compile", "coffee_compile", "express", "watch_sass"], ->
-		console.log "#####################  gulp start sequence done  ####################"
+gulp.task 'default', ["clean", "bower_src_copy", "sass_compile", "coffee_compile", "express", "watch_sass"], ->
