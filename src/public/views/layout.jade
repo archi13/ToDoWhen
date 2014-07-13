@@ -6,11 +6,11 @@ html
         | Notify me
 
     link(rel="stylesheet" href="/css/main.css")
-    script(src="/js/bower/requirejs/require")
+    script(src="/js/bower/requirejs/require.js")
     script.
         require(["/js/require.js"], function(){
           console.log("RequireJS is loaded");
-          require("/js/pages/test");
+          require(["pages/test"]);
         });
     block head
 

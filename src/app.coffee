@@ -7,7 +7,7 @@ p = Promise.pending()
 app = express()
 routes.load app
 
-app.set "views", path.join(__dirname, "src/public/views")
+app.set "views", path.join(__dirname, "public/views")
 app.set "view engine", "jade"
 app.use express.static path.join process.cwd(), "build"
 
@@ -18,4 +18,3 @@ app.listen global.config.dev.port, ->
 app.promise = p.promise
 
 module.exports = app
-

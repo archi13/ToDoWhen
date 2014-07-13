@@ -1,5 +1,5 @@
 requirejs.config
-    baseUrl: "/build/js"
+    baseUrl: "/js"
     paths:
-        jquery: "bower/jquery/jquery.min"
+        jquery: "bower/jquery/dist/jquery.min"
         
