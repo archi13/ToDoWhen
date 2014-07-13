@@ -9,28 +9,32 @@ gulp.task "casper", ->
 	nodemon {script: "tests/regression/launch.coffee", ext: "html coffee js jade"}
 
 
-gulp.task "clean", ->
+gulp.task "clean_build", ->
 	del "build", ->
+		gulp.start "bower_src_copy", "sass_compile", "coffee_compile", "watch_sass", "watch_coffee", "express"
 
-gulp.task "bower_src_copy", ["clean"], ->
-	gulp.src "./src/public/bower/**/*.*", {base: "./src/public/bower"}
-		.pipe gulp.dest "build/bower"
+gulp.task "bower_src_copy", ->
+	gulp.src "./bower/**/*.*", {base: "./bower"}
+		.pipe gulp.dest "build/js/bower"
 
-gulp.task "sass_compile", ["clean"], ->
+gulp.task "sass_compile", ->
     gulp.src "src/public/sass/**/*.sass"
         .pipe sass()
         .pipe gulp.dest "build/css"
 
-gulp.task "coffee_compile", ["clean"], ->
+gulp.task "coffee_compile", ->
 	gulp.src "./src/public/**/*.coffee"
 		.pipe coffee()
 		.pipe gulp.dest "./build/js"
 
-gulp.task "express", ["clean"], ->
+gulp.task "express", ->
 	nodemon {script: "index.coffee", ext: "html coffee js jade"}
 
-gulp.task "watch_sass", ["clean"], ->
-	gulp.watch "src/public/sass/*.sass", ["sass"]
+gulp.task "watch_sass", ->
+	gulp.watch "src/public/sass/*.sass", ["sass_compile"]
+
+gulp.task "watch_coffee", ->
+	gulp.watch "src/public/**/*.coffee", ["coffee_compile"]
 
 
-gulp.task 'default', ["clean", "bower_src_copy", "sass_compile", "coffee_compile", "express", "watch_sass"], ->
+gulp.task "default", ["clean_build"], ->
