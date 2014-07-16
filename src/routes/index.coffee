@@ -13,17 +13,19 @@ module.exports =
 			else
 				require(path)(app)
 
-	init: (app, routes, options) ->
+	init: (app, routes, options = {}) ->
+		options = _.defaults options, prefix: ""
 		for route, methods of routes
 			for method, handlers of methods
 				if not _.isArray handlers then handlers = [handlers]
 				if not _.contains ["get", "post", "put", "delete"], method then continue
 
-				if options?.middlewares
+				if options.middlewares
 					if _.isArray options.middlewares
 						handlers = options.middlewares.concat handlers
 					else
 						handlers.unshift middlewares
 
-				handlers.unshift npmPath.join "/", route
+				fullUrl = npmPath.join "/", options.prefix, route
+				handlers.unshift fullUrl
 				app[method].apply app, handlers  

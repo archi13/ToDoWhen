@@ -32,7 +32,7 @@ gulp.task "coffee_compile", ->
 		.pipe gulp.dest "./build/js"
 
 gulp.task "express", ->
-	nodemon {script: "index.coffee", ext: "html coffee js jade"}
+	nodemon {script: "index.coffee", ext: "coffee js"}
 
 gulp.task "watch_sass", ->
 	gulp.watch "src/public/sass/*.sass", ["sass_compile"]
