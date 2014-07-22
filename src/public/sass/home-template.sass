@@ -1,0 +1,55 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:100,100italic)
+
+body
+    background-image: url('/img/Pepsized_Blur_42.jpg')
+    background-position: center top
+    background-size: 100% 100%
+
+.set-panel
+    font-family: Lato
+    font-size: 4em
+    weight: 100
+    color: white
+
+    &__item
+        cursor: pointer
+        display: inline-block
+        vertical-align: top
+
+.toggler
+    opacity: 0.2
+    cursor: pointer
+    border-radius: 0.1em
+    width: 1.3em
+    display: inline-block
+    text-align: center
+    position: relative
+    top: 0
+    left: 0
+    transition: all 0.1s ease    
+    margin-right: 0.1em
+
+    img
+        width: 1em
+        vertical-align: -0.1em    
+
+    &:hover
+        opacity: 1
+        background-color: rgba(255, 255, 255, 0.1)
+
+    &:active
+        transition: all 0.1s ease
+        top: 2px
+        left: 2px
+
+.toggler_active
+    opacity: 1
+    background-color: rgba(255, 255, 255, 0.2)
+
+    &:hover
+        background-color: rgba(255, 255, 255, 0.2)
+
+.cycle-toggler
+    padding-left: 0.1em
+    img
+        width: 1.1em

@@ -1,4 +1,26 @@
+include ./mixins/index
 extends ../layout
 
+block footer
+    script.
+        require(["/js/pages/templates/home.js"]);
+
 block content
-    | home template
+    .body-wrapper
+        .centered
+            .container-fluid.set-panel
+                .row
+                    .col-sm-2
+                        .toggler.help-toggler
+                            img(src="/img/help.png")
+                    .col-sm-8 
+                        .set-panel__item.set-panel__notify Notify me
+                        .set-panel__item
+                            mixin after-at()
+                        .set-panel__item.set-panel__time 15m 00s
+                    .col-sm-2
+                        .toggler.play-toggler
+                            img(src="/img/play.png")
+                        .toggler.cycle-toggler
+                            img(src="/img/cycled.png")
+        .helper
