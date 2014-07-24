@@ -16,8 +16,8 @@ app.use bodyParser.urlencoded {extended: true}
 routes.load app
 
 app.listen global.config.dev.port, ->
-  p.fulfill()
-  console.log "#################### app is started at #{global.config.dev.port} ###########################"
+    p.fulfill()
+    console.log "#################### app is started at #{global.config.dev.port} ###########################"
 
 app.promise = p.promise
 
