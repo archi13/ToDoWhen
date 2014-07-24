@@ -24,7 +24,7 @@ module.exports =
 					if _.isArray options.middlewares
 						handlers = options.middlewares.concat handlers
 					else
-						handlers.unshift middlewares
+						handlers.unshift options.middlewares
 
 				fullUrl = npmPath.join "/", options.prefix, route
 				handlers.unshift fullUrl
