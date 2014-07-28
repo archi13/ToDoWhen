@@ -1,51 +1,46 @@
-app = require '../../index'
 request = require 'supertest'
+app = require '../../src/app.coffee'
 
-request(app)
-    .get '/simple-get'
-    .query 'result=done'
-    .expect 'done'
-    .end (err, res) ->
-        if err
-            console.log 'ERROR  simple get  - GET /simple-get'
-        else
-            console.log 'OK     simple get  - GET /simple-get'
 
-request(app)
-    .post '/simple-post'
-    .send 'result=done'
-    .expect "done"
-    .end (err, res) ->
-        if err
-            console.log 'ERROR      simple post - POST /simple-post'
-        else
-            console.log 'OK     simple post - POST /simple-post'
+describe 'Router', ->
 
-request(app)
-    .get '/tests/prefix-get'
-    .query 'result=done'
-    .expect 'done'
-    .end (err, res) ->
-        if err
-            console.log 'ERROR  prefix get  - GET /tests/prefix-get'
-        else
-            console.log 'OK     prefix get  - GET /tests/prefix-get'
+    it 'should give status 200 and right data on GET query ', (done) ->
+        request app
+            .get '/simple-get'
+            .query 'result=done'
+            .expect 200
+            .expect 'done'
+            .end done
+    
+    it 'should give status 200 and right data on POST query', (done) ->
+        request app
+            .post '/simple-post'
+            .send 'result=done'
+            .expect 200
+            .expect 'done'
+            .end done
+    
+    it 'should give status 200 and right data on GET query to URL with prefix', (done) ->
+        request app
+            .get '/tests/prefix-get'
+            .query 'result=done'
+            .expect 200
+            .expect 'done'
+            .end done
+    
+    it 'should give status 200 and right data on POST query to URL with prefix', (done) ->
+        request app
+            .post '/tests/prefix-post'
+            .send 'result=done'
+            .expect 200
+            .expect 'done'
+            .end done
+    
+    it 'should give status 200 and right data on GET query to URL with middlewares', (done) ->
+        request app
+            .get '/middleware'
+            .expect 200
+            .expect 'done'
+            .end done
 
-request(app)
-    .post '/tests/prefix-post'
-    .send 'result=done'
-    .expect 'done'
-    .end (err, res) ->
-        if err
-            console.log 'ERROR      prefix post - POST /tests/prefix-post'
-        else
-            console.log 'OK     prefix post - POST /tests/prefix-post'
 
-request(app)
-    .get '/middleware'
-    .expect 'done'
-    .end (err, res) ->
-        if err
-            console.log 'ERROR      middleware  - GET /middleware'
-        else
-            console.log 'OK     middleware  - GET /middleware'
