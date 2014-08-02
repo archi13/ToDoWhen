@@ -1,6 +1,9 @@
 routes = require "./index"
 
 templateRoutes = 
+    "react":
+        "get": (req, res, next) ->
+            res.render "templates/react"
     "home":
         "get": (req, res, next) ->
             res.render "templates/home"

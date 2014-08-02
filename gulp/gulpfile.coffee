@@ -3,6 +3,7 @@ nodemon = require "gulp-nodemon"
 sass = require "gulp-ruby-sass"
 del = require "del"
 coffee = require "gulp-coffee"
+jsx = require "gulp-react"
 
 
 gulp.task "casper", ->
@@ -11,7 +12,7 @@ gulp.task "casper", ->
 
 gulp.task "clean_build", ->
 	del "build", ->
-		gulp.start "bower_src_copy", "img_copy", "sass_compile", "coffee_compile", "watch_sass", "watch_coffee", "express"
+		gulp.start "bower_src_copy", "img_copy", "sass_compile", "react_compile", "watch_sass", "watch_coffee", "express"
 
 gulp.task "bower_src_copy", ->
 	gulp.src "./bower/**/*.*", {base: "./bower"}
@@ -28,7 +29,12 @@ gulp.task "sass_compile", ->
 
 gulp.task "coffee_compile", ->
 	gulp.src "./src/public/**/*.coffee"
-		.pipe coffee()
+		.pipe coffee({bare: true})
+		.pipe gulp.dest "./build/js"
+
+gulp.task "react_compile", ["coffee_compile"],  ->
+	gulp.src ["./build/js/**/*.*", "!./build/js/bower/**/*.*"]
+		.pipe jsx()
 		.pipe gulp.dest "./build/js"
 
 gulp.task "express", ->
@@ -38,7 +44,7 @@ gulp.task "watch_sass", ->
 	gulp.watch "src/public/sass/*.sass", ["sass_compile"]
 
 gulp.task "watch_coffee", ->
-	gulp.watch "src/public/**/*.coffee", ["coffee_compile"]
+	gulp.watch "src/public/**/*.coffee", ["react_compile"]
 
 
 gulp.task "default", ["clean_build"], ->

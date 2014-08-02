@@ -6,21 +6,23 @@ block footer
         require(["/js/pages/templates/home.js"]);
 
 block content
+    .visible-lg LG
+    .visible-md MD
+    .visible-sm SM
+    .visible-xs XS
+
     .body-wrapper
         .centered
-            .container-fluid.set-panel
-                .row
-                    .col-sm-2
-                        .toggler.help-toggler
-                            img(src="/img/help.png")
-                    .col-sm-8 
-                        | Notify me
-                        .set-panel__item
-                            mixin after-at()
-                        .set-panel__item.set-panel__time 15m 00s
-                    .col-sm-2
-                        .toggler.play-toggler
-                            img(src="/img/play.png")
-                        .toggler.cycle-toggler
-                            img(src="/img/cycled.png")
+            .set-panel
+                .help-toggler
+                    .toggler
+                        img(src="/img/help.png")
+                | Notify me
+                .set-panel__item
+                    mixin after-at()
+                .set-panel__item.set-panel__time 15m 00s
+                .toggler.play-toggler
+                    img(src="/img/play.png")
+                .toggler.cycle-toggler
+                    img(src="/img/cycled.png")
         .helper

@@ -1,11 +1,12 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:100,100italic)
 
 body
-    background-image: url('/img/Pepsized_Blur_42.jpg')
+    background-color: #3498DB
     background-position: center top
     background-size: 100% 100%
 
 .set-panel
+    position: relative
     font-family: Lato
     font-size: 4em
     weight: 100
@@ -49,7 +50,23 @@ body
     &:hover
         background-color: rgba(255, 255, 255, 0.3)
 
+.help-toggler
+    position: absolute
+    display: inline-block
+    width: 100%
+    border: 1px solid red
+    left: 7%
+
 .cycle-toggler
     padding-left: 0.1em
     img
         width: 1.1em
+
+.logo
+    position: absolute
+    top: 10%
+    width: 100%
+    text-align: center
+
+    &__img
+        width: 6em
