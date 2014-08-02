@@ -4,10 +4,15 @@ sass = require "gulp-ruby-sass"
 del = require "del"
 coffee = require "gulp-coffee"
 jsx = require "gulp-react"
+mocha = require "gulp-mocha"
 
 
 gulp.task "casper", ->
 	nodemon {script: "tests/regression/launch.coffee", ext: "html coffee js jade"}
+
+gulp.task "test", ->
+	return gulp.src "tests/integration/routing.coffee", {read: false}
+		.pipe mocha {reporter: 'spec'}
 
 
 gulp.task "clean_build", ->
