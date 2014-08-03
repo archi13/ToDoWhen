@@ -1,0 +1,8 @@
+{
+    "input": {
+        "CLEAR_SEARCH": "Clears search string"
+    },
+    "output": {
+        "SEARCH_CHANGE": "Search string changed"
+    }
+}
