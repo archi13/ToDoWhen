@@ -1,0 +1,24 @@
+{
+    "rules": [
+        {
+            "when": {
+                "component": "search",
+                "cause": "Search string changed"
+            },
+            "then": {
+                "component": "footer-info",
+                "action": "Change search string in footer"
+            }
+        },
+        {
+            "when": {
+                "component": "search",
+                "cause": "Number of results has changed"
+            },
+            "then": {
+                "component": "footer-info",
+                "action": "Change number of results in footer"
+            }
+        }
+    ]
+}

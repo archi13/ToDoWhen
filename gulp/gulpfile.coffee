@@ -12,19 +12,12 @@ gulp.task "casper", ->
 	nodemon {script: "tests/regression/launch.coffee", ext: "html coffee js jade"}
 
 gulp.task "test", ->
-	return gulp.src "tests/integration/routing.coffee", {read: false}
+	gulp.src "tests/integration/routing.coffee", {read: false}
 		.pipe mocha {reporter: 'spec'}
 
 gulp.task "clean_build", ->
 	del "build", ->
-		gulp.start ["bower_src_copy", 
-			"img_copy", 
-			"sass_compile", 
-			"jsx_compile", 
-			"react_compile", 
-			"watch_sass", 
-			"watch_coffee", 
-			"express"]
+		gulp.start "bower_src_copy", "img_copy", "json_copy", "sass_compile", "react_compile", "watch_sass", "watch_coffee", "watch_json", "express"
 
 gulp.task "bower_src_copy", ->
 	gulp.src "./bower/**/*.*", {base: "./bower"}
@@ -33,6 +26,10 @@ gulp.task "bower_src_copy", ->
 gulp.task "img_copy", ->
 	gulp.src "./src/public/img/**/*.*", {base: "./src/public/img"}
 		.pipe gulp.dest "build/img"
+
+gulp.task "json_copy", ->
+	gulp.src "./src/public/**/*.json"
+		.pipe gulp.dest "build/js"
 
 gulp.task "sass_compile", ->
     gulp.src "src/public/sass/**/*.sass"
@@ -51,7 +48,7 @@ gulp.task "jsx_compile", ->
 		.pipe gulp.dest "./build/js"
 
 gulp.task "react_compile", ["coffee_compile"],  ->
-	gulp.src ["./build/js/**/*.*", "!./build/js/bower/**/*.*"]
+	gulp.src ["./build/js/**/*.js", "!./build/js/bower/**/*.*"]
 		.pipe jsx()
 		.pipe gulp.dest "./build/js"
 
@@ -64,5 +61,7 @@ gulp.task "watch_sass", ->
 gulp.task "watch_coffee", ->
 	gulp.watch "src/public/**/*.coffee", ["react_compile"]
 
+gulp.task "watch_json", ->
+	gulp.watch "src/public/**/*.json", ["json_copy"]
 
 gulp.task "default", ["clean_build"], ->

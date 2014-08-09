@@ -18,6 +18,8 @@
     "bootstrap-sass-official": "~3.2.0",
     "jquery": "~2.1.1",
     "requirejs": "~2.1.14",
-    "EventEmitter.js": "~4.2.7"
+    "EventEmitter.js": "~4.2.7",
+    "text": "~2.0.12",
+    "lodash": "~2.4.1"
   }
 }

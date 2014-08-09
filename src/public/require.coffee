@@ -6,3 +6,5 @@ requirejs.config
         "test-components": "pages/templates/components"
         Emitter: "bower/EventEmitter.js/EventEmitter"
         EventEmitter: "EventEmitter"
+        text: "bower/text/text"
+        lodash: "bower/lodash/dist/lodash.min"

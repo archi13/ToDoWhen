@@ -1,19 +1,23 @@
 `/** @jsx React.DOM */`
 
 define ["react", "EventEmitter"], (React, EventEmitter) ->
-    React.createClass
-        inputs:
-            "Clears search string": ->
-                @setState searchString: ""
-        getInitialState: ->
-            searchString: ""
-        change: ->
-            str = @refs.search.getDOMNode().value
-            @setState searchString: str
-            output "Search string changed", searchString: str
-        render: ->
-            `(
-                <div>
-                    <input ref="search" placeholder="Search something" value={this.state.searchString} onChange={this.change} />
-                </div>
-            )`
+    input:
+        "Clears search string": ->
+            @setState searchString: ""
+    output:
+        "Search string changed": "change"
+        "Number of results has changed": "changeNum"
+    getInitialState: ->
+        searchString: ""
+    change: ->
+        str = @refs.search.getDOMNode().value
+        num = parseInt str.length / 4
+        @changeNum num
+        @modify searchString: str
+    changeNum: (num) -> count: num
+    render: ->
+        `(
+            <div>
+                <input ref="search" placeholder="Search something" value={this.state.searchString} onChange={this.change} />
+            </div>
+        )`

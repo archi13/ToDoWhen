@@ -10,7 +10,7 @@ define ["react"
                 `(
                     <div className="app">
                         <h3>Application container</h3>
-                        <Search />
+                        <Search.component />
                         <ResultDetails />
                         <ResultsContainer />
                     </div>

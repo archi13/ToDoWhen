@@ -10,7 +10,7 @@ define ["react"
                 `(
                     <div className="green-border">
                         <h4>results container</h4>
-                        <FooterInfo />
+                        <FooterInfo.C />
                         <ResultItem />
                         <ClearButton />
                     </div>

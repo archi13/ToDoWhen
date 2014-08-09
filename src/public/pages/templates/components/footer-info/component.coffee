@@ -1,15 +1,21 @@
 `/** @jsx React.DOM */`
 
-define ["react", "EventEmitter"], (React, EventEmitter) ->
-    React.createClass
-        getInitialState: ->
-            {}
-        render: ->
-            `(
-                <div className="">
-                    footer info: {this.state.searchString}
-                </div>
-            )`
-        componentDidMount: ->
-            EventEmitter.on "SEARCH_CHANGE", (payload) =>
-                @setState {searchString: payload.searchString}
+define ["react", "test-components/clear-button/component"], (React, ClearButton) ->
+
+    input:
+        "Change number of results in footer": (payload) ->
+            state = @modify count: payload.count
+        "Change search string in footer": (payload) ->
+            state = @modify searchString: payload.searchString
+
+    getInitialState: ->
+        count: 0
+        searchString: ""
+
+    render: ->
+        `(
+            <div className="">
+                {this.state.count} results for {this.state.searchString}
+                <ClearButton />
+            </div>
+        )`
