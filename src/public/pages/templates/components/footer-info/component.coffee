@@ -13,9 +13,10 @@ define ["react", "test-components/clear-button/component"], (React, ClearButton)
         searchString: ""
 
     render: ->
+        info = `<span>{this.state.count} results for {this.state.searchString}</span>`
         `(
             <div className="">
-                {this.state.count} results for {this.state.searchString}
+                {this.state.searchString.length ? info : ''}
                 <ClearButton />
             </div>
         )`
