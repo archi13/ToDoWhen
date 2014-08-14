@@ -1,10 +1,14 @@
 `/** @jsx React.DOM */`
 
-define ["react"], (React) ->
+define ["react", "EventEmitter"], (React, EventEmitter) ->
     React.createClass
+        output:
+            "Search string changed": "change"
+        change: ->
+            @modify searchString: ""
         render: ->
             `(
-                <div className="clearbutton">
+                <div className="clearbutton" onClick={this.change}>
                     clear
                 </div>
             )`
