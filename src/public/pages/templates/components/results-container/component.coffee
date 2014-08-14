@@ -11,11 +11,11 @@ define ["react"
                     <div className="resultscontainer">
                         <div className="resultsheader"
                             <p>You have searched for: ...</p>
-                            <ClearButton />
+                            <ClearButton.C />
                         </div>
                         <div className="resultsfooter">
-                            <FooterInfo />
-                            <ClearButton />
+                            <FooterInfo.C />
+                            <ClearButton.C />
                         </div>
                     </div>
                 )`

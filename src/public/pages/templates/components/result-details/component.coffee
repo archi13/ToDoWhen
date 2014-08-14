@@ -9,8 +9,8 @@ define ["react"
             render: ->
                 `(
                     <div className="resultdetails">
-                        <Title />
-                        <Description />
-                        <Delete />
+                        <Title.C />
+                        <Description.C />
+                        <Delete.C />
                     </div>
                 )`

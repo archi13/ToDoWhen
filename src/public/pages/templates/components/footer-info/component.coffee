@@ -17,6 +17,6 @@ define ["react", "test-components/clear-button/component"], (React, ClearButton)
         `(
             <div className="">
                 {this.state.searchString.length ? info : ''}
-                <ClearButton />
+                <ClearButton.C />
             </div>
         )`

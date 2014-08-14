@@ -10,8 +10,8 @@ define ["react"
                 `(
                     <div className="app">
                         <h3>Application container</h3>
-                        <Search.component />
-                        <ResultDetails />
-                        <ResultsContainer />
+                        <Search.C />
+                        <ResultDetails.C />
+                        <ResultsContainer.C />
                     </div>
                 )`
