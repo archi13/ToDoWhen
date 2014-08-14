@@ -8,10 +8,14 @@ define ["react"
         React.createClass
             render: ->
                 `(
-                    <div className="green-border">
-                        <h4>results container</h4>
-                        <FooterInfo.C />
-                        <ResultItem />
-                        <ClearButton />
+                    <div className="resultscontainer">
+                        <div className="resultsheader"
+                            <p>You have searched for: ...</p>
+                            <ClearButton />
+                        </div>
+                        <div className="resultsfooter">
+                            <FooterInfo />
+                            <ClearButton />
+                        </div>
                     </div>
                 )`

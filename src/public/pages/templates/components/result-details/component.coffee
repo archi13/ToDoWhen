@@ -8,8 +8,7 @@ define ["react"
         React.createClass
             render: ->
                 `(
-                    <div className="red-border">
-                        <h4>result details</h4>
+                    <div className="resultdetails">
                         <Title />
                         <Description />
                         <Delete />

@@ -3,7 +3,7 @@ define ["react"], (React) ->
     React.createClass
         render: ->
             `(
-                <div className="">
-                  title
+                <div className="resultdetailstitle">
+                  Test title
                 </div>
             )`

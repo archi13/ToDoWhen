@@ -17,7 +17,8 @@ define ["react", "EventEmitter"], (React, EventEmitter) ->
     changeNum: (num) -> count: num
     render: ->
         `(
-            <div>
+            <div className="searchfield">
+                <h4>Search</h4>
                 <input ref="search" placeholder="Search something" value={this.state.searchString} onChange={this.change} />
             </div>
         )`
