@@ -5,7 +5,8 @@ del = require "del"
 coffee = require "gulp-coffee"
 jsx = require "gulp-react"
 mocha = require "gulp-mocha"
-concat = require "gulp-concat-util"
+concatCss = require "gulp-concat-css"
+header = require "gulp-header"
 
 
 gulp.task "casper", ->
@@ -17,7 +18,15 @@ gulp.task "test", ->
 
 gulp.task "clean_build", ->
 	del "build", ->
-		gulp.start "bower_src_copy", "img_copy", "json_copy", "sass_compile", "react_compile", "watch_sass", "watch_coffee", "watch_json", "express"
+		gulp.start ["bower_src_copy",
+			"img_copy",
+			"json_copy",
+			"sass_compile",
+			"react_compile",
+			"watch_sass",
+			"watch_coffee",
+			"watch_json",
+			"express"]
 
 gulp.task "bower_src_copy", ->
 	gulp.src "./bower/**/*.*", {base: "./bower"}
@@ -34,21 +43,18 @@ gulp.task "json_copy", ->
 gulp.task "sass_compile", ->
     gulp.src "src/public/sass/**/*.sass"
         .pipe sass()
-        .pipe gulp.dest "build/css"
+        .pipe concatCss "css/main.css"
+        .pipe gulp.dest "build/"
 
 gulp.task "coffee_compile", ->
-	gulp.src "./src/public/**/*.coffee"
-		.pipe coffee({bare: true})
-		.pipe gulp.dest "./build/js"
+		gulp.src ["./src/public/**/*.coffee", "!./src/public/pages/templates/**/*.*"]
+			.pipe coffee({bare: true})
+			.pipe gulp.dest "./build/js"
 
-gulp.task "jsx_compile", ->
-	gulp.src  "./src/public/**/*.jsx"
-		.pipe concat.header('`/** @jsx React.DOM */`\n')
-		.pipe coffee({bare: true})
-		.pipe gulp.dest "./build/js"
-
-gulp.task "react_compile", ["coffee_compile"],  ->
-	gulp.src ["./build/js/**/*.js", "!./build/js/bower/**/*.*"]
+gulp.task "react_compile", ["coffee_compile"], ->
+	gulp.src "./src/public/pages/templates/**/*.coffee", {base: "./src/public"}
+        .pipe coffee({bare: true})
+        .pipe header "/** @jsx React.DOM */"
 		.pipe jsx()
 		.pipe gulp.dest "./build/js"
 
