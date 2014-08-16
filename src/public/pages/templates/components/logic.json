@@ -19,6 +19,16 @@
                 "component": "footer-info",
                 "action": "Change number of results in footer"
             }
+        },
+        {
+            "when": {
+                "component": "clear-button",
+                "cause": "Clear button pressed"
+            },
+            "then": {
+                "component": "search",
+                "cause": "Clears search string"
+            }
         }
     ]
 }

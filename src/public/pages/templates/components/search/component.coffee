@@ -1,5 +1,3 @@
-`/** @jsx React.DOM */`
-
 define ["react", "EventEmitter"], (React, EventEmitter) ->
     input:
         "Clears search string": ->

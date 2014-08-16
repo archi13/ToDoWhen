@@ -1,5 +1,3 @@
-`/** @jsx React.DOM */`
-
 define ["react", "test-components/clear-button/component"], (React, ClearButton) ->
 
     input:

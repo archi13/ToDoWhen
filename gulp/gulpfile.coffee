@@ -54,7 +54,7 @@ gulp.task "coffee_compile", ->
 gulp.task "react_compile", ["coffee_compile"], ->
 	gulp.src "./src/public/pages/templates/**/*.coffee", {base: "./src/public"}
         .pipe coffee({bare: true})
-        .pipe header "/** @jsx React.DOM */"
+        .pipe header "/** @jsx React.DOM */\n\n"
 		.pipe jsx()
 		.pipe gulp.dest "./build/js"
 
