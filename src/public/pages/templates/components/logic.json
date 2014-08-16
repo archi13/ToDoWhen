@@ -31,6 +31,36 @@
                 "component": "search",
                 "action": "Clears search string"
             }
+        },
+        {
+            "when": {
+                "component": "search",
+                "cause": "Search string changed"
+            },
+            "then": {
+                "component": "results-container",
+                "action": "Set search string in title"
+            }
+        },
+        {
+            "when": {
+                "component": "search",
+                "cause": "Search string changed"
+            },
+            "then": {
+                "component": "results-container",
+                "action": "Filter data"
+            }
+        },
+        {
+            "when": {
+                "component": "results-container",
+                "cause": "Number of search results has changed"
+            },
+            "then": {
+                "component": "footer-info",
+                "action": "Change number of results in footer"
+            }
         }
     ]
 }

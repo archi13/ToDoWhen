@@ -25,9 +25,11 @@ define ["text!./logic.json", "require", "react", "EventEmitter", "lodash"], (log
             do (name) ->
                 wrapComponentDidMount component, ->
                     @modify = (stateChunk) ->
-                        newState = _.merge @state, stateChunk
-                        @setState newState
-                        newState
+                        for name, value of stateChunk
+                            @state[name] = value
+
+                        @setState @state
+                        @state
 
             component.component = component.C = React.createClass component
 
@@ -36,10 +38,12 @@ define ["text!./logic.json", "require", "react", "EventEmitter", "lodash"], (log
         outputHandlerName = outputComponent.output[cause]
         oldOutputHandler = outputComponent[outputHandlerName]
 
-        do (oldOutputHandler, outputHandlerName, eventName) ->
+        unless outputComponent[outputHandlerName].done
             outputComponent[outputHandlerName] = ->
                 payload = oldOutputHandler.apply @, arguments
                 EventEmitter.emit eventName, payload
+
+            outputComponent[outputHandlerName].done = true
 
     initInputHandler = (inputComponentName, actionName, eventName) ->
         inputComponent = getCachedComponent inputComponentName

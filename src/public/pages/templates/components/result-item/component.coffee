@@ -1,12 +1,8 @@
 define ["react"], (React) ->
+    output:
+        "Element was clicked": "clicked"
+    clicked: -> element: this.props.value
     render: ->
         `(
-            <div className="searchresultcontent">
-                <ol>
-                    <li>search result 1</li>
-                    <li>search result 2</li>
-                    <li>search result 3</li>
-                    <li>search result 4</li>
-                </ol>
-            </div>
+            <li ref="el" onClick={this.clicked}>{this.props.value.title}</li>
         )`
