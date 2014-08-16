@@ -1,9 +1,9 @@
 define ["react", "EventEmitter"], (React, EventEmitter) ->
     input:
         "Clears search string": ->
-            @setState searchString: ""
+            @changeStr ""
     output:
-        "Search string changed": "change"
+        "Search string changed": "changeStr"
         "Number of results has changed": "changeNum"
     getInitialState: ->
         searchString: ""
@@ -11,7 +11,8 @@ define ["react", "EventEmitter"], (React, EventEmitter) ->
         str = @refs.search.getDOMNode().value
         num = parseInt str.length / 4
         @changeNum num
-        @modify searchString: str
+        @changeStr str
+    changeStr: (str) -> @modify searchString: str
     changeNum: (num) -> count: num
     render: ->
         `(

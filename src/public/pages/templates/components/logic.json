@@ -29,7 +29,7 @@
             },
             "then": {
                 "component": "search",
-                "cause": "Clears search string"
+                "action": "Clears search string"
             }
         }
     ]

@@ -48,8 +48,6 @@ define ["text!./logic.json", "require", "react", "EventEmitter", "lodash"], (log
             EventEmitter.on eventName, (payload) =>
                 inputComponent.input[actionName].call @, payload
 
-
-
     initComponents: (cb) ->
         components = {}
         rules = JSON.parse(logic).rules
