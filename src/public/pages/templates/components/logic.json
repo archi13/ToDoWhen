@@ -1,4 +1,6 @@
 {
+    "components": ["app", "clear-button", "delete", "description", "footer-info", "result-details", 
+        "result-item", "results-container", "search", "title"],
     "rules": [
         {
             "when": {

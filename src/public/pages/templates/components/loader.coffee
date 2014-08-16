@@ -16,6 +16,11 @@ define ["text!./logic.json", "require", "react", "EventEmitter", "lodash"], (log
         component
 
     createReactComponents = ->
+
+        allComponents = JSON.parse(logic).components
+        for component in allComponents
+            getCachedComponent component
+
         for name, component of components
             do (name) ->
                 wrapComponentDidMount component, ->
